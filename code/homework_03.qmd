@@ -34,6 +34,8 @@ To determine the strength of the relationship between salinity and California pi
 
 ## b. Create a visualization
 ```{r}
+#| label: create visualizaiton
+#| message: false
 # base layer: ggplot
 ggplot(data = salinity, # using salinity data frame
        aes(x = salinity_mS_cm, # soil salinity on x-axis (predictor)
@@ -51,6 +53,34 @@ ggplot(data = salinity, # using salinity data frame
 
 
 ## c. Check your assumptions and run your test
+
+### Assumption Checks
+
+```{r}
+#| label: assumption checks
+#| message: false
+
+# check normality of salinity variable using Shapiro-Wilk test
+shapiro.test(salinity$salinity_mS_cm)
+
+# check normality of biomass variable using Shapiro-Wilk test
+shapiro.test(salinity$pickleweed)
+```
+Written response: which assumptions you checked, how you checked your assumptions, your assessment of your assumption checks
+FINISH THIS 
+
+
+### Running the Test
+```{r}
+#| label: pearson correlation
+#| message: false
+
+# run Pearson correlation between soil salinity and pickleweed biomass
+cor.test(salinity$salinity_mS_cm, # predictor: soil salinity
+         salinity$pickleweed, # response: pickleweed biomass
+         method = "pearson") # parametric correlation test
+
+```
 
 
 ## d. Results communication
