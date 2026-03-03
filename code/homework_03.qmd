@@ -114,11 +114,11 @@ To evaluate the strength of the relationship between pickleweed biomass and soil
 ```{r}
 #| label: continuous variable visualization
 #| message: false
-my_clean_data <- my_data |> 
+my_clean_data <- my_data |> # use cleaned data-set
   clean_names() |> # clean column names
   rename(duration = duration_hr_mm) |> # rename for easier use
   filter(duration != "48:00:00") |> # remove the typo entry
-   # convert all durations as decimal hours (e.g. 1.5 = 1hr 30min)
+   # convert all durations to decimal point instead of ":"
    mutate(duration_decimal = case_when(
     str_detect(duration, "\\.") ~ as.numeric(duration), # if format is 4.18, keep as numeric
     str_detect(duration, ":") ~ period_to_seconds(hm(duration)) / 3600 # if format is 1:43, convert to decimal
@@ -126,10 +126,9 @@ my_clean_data <- my_data |>
 # base layer: ggplot
 ggplot(
   data = my_clean_data,
-  aes(
-    x = duration_decimal, # cleaned numeric duration
-    y = tasks_completed)) + # tasks completed
-  # first layer: scatterplot
+  aes(x = duration_decimal, # predictor var: duration
+      y = tasks_completed)) + # response var: tasks completed
+  # first layer: scatter-plot
   geom_point(color = "forestgreen", # green points
              size = 2, 
              alpha = 0.7) + # slight transparency 
@@ -137,12 +136,13 @@ ggplot(
   scale_x_continuous(breaks = seq(0, 6, by = 1), # tick every hour
                      labels = c("0h", "1h", "2h", "3h", "4h", "5h", "6h")) + 
   # title plot, x-axis, y-axis
-  labs(
-    title = "Analyzing productivity:\nTasks Completed vs. Study Duration",
-    x = "Study Duration (hours)",
-    y = "Tasks Completed",
+  labs(title = "Analyzing productivity:\nTasks Completed vs. Study Duration",
+       x = "Study Duration (hours)",
+       y = "Tasks Completed",
     subtitle = "Most recent observation: March 1, 2026") + # most recent date
-  theme_minimal() # clean theme
+  # add clean themes and remove minor grid lines
+  theme_minimal() + 
+  theme(panel.grid.minor = element_blank()) 
 ```
 
 ### Categorical variable visualization:  vs Tasks completed
@@ -150,30 +150,36 @@ ggplot(
 #| label: categorical-variable-visualization
 #| message: false
 my_clean_data <- my_data |> 
-  clean_names() # Make all column names lower case with underscores
-ggplot(
-  data = my_clean_data, # Use cleaned personal dataset
-    aes(
-    x = study_location, # Categorical predictor on x-axis
-    y = tasks_completed,
-    fill = study_location)) + # Response variable on y-axis
-  geom_boxplot( # Draw a boxplot to summarize the distribution of tasks completed
-    alpha = 0.6, # Make boxplots semi-transparent
-    width = 0.4) + 
-  geom_jitter( # Show jittered points to show individual observations
-    width = 0.1, # Horizontal spread to avoid overlap when there's more data, but there is not enough data to be an issue now
-    alpha = 0.7, # Semi-transparent points
-    size  = 2) + # Point size
-    scale_fill_manual(values = c(
-    "Café" = "#FEBC11", # warm gold for café - exact match with accent
-    "Library" = "#4169E1")) + # muted blue-green for library
-    scale_y_continuous(breaks = c(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)) + # Set specific y-axis tick marks for clarity
-      labs( # Add descriptive title and axis labels
-      title = "Analyzing productivity:\nTasks Completed vs. Study Location",
-      x = "Study Location",
-      y = "Tasks Completed",
-  subtitle = "Most recent observation: March 1, 2026") +
-  theme_minimal() # Set theme different from default
+  clean_names() # columns names lower case with underscores
+# base layer: ggplot using cleaned data-set
+ggplot(data = my_clean_data, 
+      aes(x = study_location, # categorical predictor on x-axis
+          y = tasks_completed, # response variable on y-axis
+          fill = study_location)) + 
+  # add a cap at whisker end for visual appeal
+  stat_boxplot(
+    geom = "errorbar", # adds horizontal caps at whisker ends
+    width = 0.02) + # width os the caps
+  # first layer: boxplot 
+  geom_boxplot(alpha = 0.6, # make boxplot transparent 
+               width = 0.4) + 
+  # second layer: add jittered points 
+  geom_jitter(width = 0.1, # horizontal spread to avoid overlap
+              alpha = 0.7, # semi-transparent points
+              size  = 2) + # point size
+    scale_fill_manual(values = c("Café" = "#FEBC11", # warm gold for café
+                                 "Library" = "#4169E1")) + # muted blue-green for library
+    scale_y_continuous(breaks = seq(0, 12, by = 2), limits = c(0, 13)) + # set  y-axis tick marks every 2 tasks for clarity
+    # add title and axis labels    
+    labs(title = "Analyzing productivity:\nTasks Completed vs. Study Location",
+           x = "Study Location",
+           y = "Tasks Completed",
+  subtitle = "Most recent observation: March 1, 2026") + # add subtitle with date
+  # set theme, remove legend, remove minor grid lines
+  theme_minimal() + 
+  theme(legend.position = "none") + 
+  theme(panel.grid.minor = element_blank(), 
+        panel.grid.major.x = element_blank())
 ```
 
 ## b. Captions
