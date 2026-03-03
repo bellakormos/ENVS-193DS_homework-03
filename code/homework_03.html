@@ -69,7 +69,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="homework_03_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="homework_03_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="homework_03_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="homework_03_files/libs/bootstrap/bootstrap-8a90b9f5b4ffc9e7e842c6f615795ee6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="homework_03_files/libs/bootstrap/bootstrap-c6ff2dbc93b22712bdb604d522d35113.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -105,9 +105,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><a href="https://github.com/bellakormos/ENVS-193DS_homework-03">GitHub Repository</a></p>
-<section id="homework-set-up" class="level1">
-<h1>Homework Set Up</h1>
+<p><a href="https://github.com/bellakormos/ENVS-193DS_homework-03">GitHub Repository</a> # Homework Set Up</p>
 <p>Reading in packages:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load in all packages</span></span>
@@ -120,7 +118,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>salinity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"salinity-pickleweed.csv"</span>)) <span class="co"># store the data and save object as "salinity" </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"updated_personal-data.csv"</span>)) <span class="co"># Read in the personal data as an object named "my_data"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 <section id="problem-1.-slough-soil-salinity" class="level1">
 <h1>Problem 1. Slough soil salinity</h1>
 <section id="a.-an-appropriate-test" class="level2">
@@ -176,7 +173,7 @@ data:  salinity$pickleweed
 W = 0.9299, p-value = 0.1088</code></pre>
 </div>
 </div>
-<p>Written response: which assumptions you checked, how you checked your assumptions, your assessment of your assumption checks FINISH THIS</p>
+<p>Written response: I checked whether soil salinity and pickleweed biomass were normally distributed, since Pearson’s r assumes normality. I used the Shapiro-Wilk test for both variables, and the test showed p = 0.46 for soil salinity and p = 0.11 for pickleweed biomass. Since both p-values are greater than 0.05, the data does not significantly deviate from normality, and the Pearson correlation is appropriate.</p>
 </section>
 <section id="running-the-test" class="level3">
 <h3 class="anchored" data-anchor-id="running-the-test">Running the Test</h3>
@@ -203,6 +200,7 @@ sample estimates:
 </section>
 <section id="d.-results-communication" class="level2">
 <h2 class="anchored" data-anchor-id="d.-results-communication">d.&nbsp;Results communication</h2>
+<p>To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Pearson’s product-moment correlation. We found a moderate positive relationship between soil salinity and pickleweed biomass (Pearson’s r = 0.53, t(21) = 2.9, p = 0.01, ⍺ = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough.</p>
 </section>
 <section id="e.-test-implications" class="level2">
 <h2 class="anchored" data-anchor-id="e.-test-implications">e. Test implications</h2>
