@@ -86,19 +86,25 @@ cor.test(salinity$salinity_mS_cm, # predictor: soil salinity
 
 ## d. Results communication
 
-To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Pearson's product-moment correlation. We found a moderate positive relationship between soil salinity and pickleweed biomass (Pearson’s r = 0.53, t(21) = 2.9, p = 0.01, ⍺ = 0.05), which suggests that pickleweed 
-biomass tends to increase as soil salinity increases along the slough. 
+To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Pearson's product-moment correlation. We found a moderate positive relationship between soil salinity and pickleweed biomass (Pearson’s r = 0.53, t(21) = 2.9, p = 0.01, ⍺ = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. 
 
 
 ## e. Test implications
-You’re working on a team of people at this restoration site who are also concerned about pickleweed planting. In 2-3 sentences, write what you would communicate to them about the results of this test and what it means for pickleweed planting success at your site
-
-Be cognizant of your audience as you are writing: what would they need to know to take action?
+Our analysis found a moderate positive relationship between soil salinity and pickleweed biomass at this restoration site, which means that in higher salinity soils, pickleweed is growing with a greater biomass. This ultimately suggests that saltier conditions are beneficial for the growth of pickleweed, which makes sense since it is a salt-tolerate species. To ensure pickleweed planting success, planting should be prioritized in higher salinity areas of the slough.
 
 
 ## f. Double check your own work.
+```{r}
+#| label: spearman tests
+#| message: false
 
+# run Spearman rank correlation as a comparison to Pearson
+cor.test(salinity$salinity_mS_cm, # predictor is salinity
+         salinity$pickleweed, # response is pickleweed biomass
+         method = "spearman") # non-parametric rank-based correlation
 
+```
+To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman p = 59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both tests agree that the relationship is moderate and positive, so the result is robust with both correlation methods.  
 
 # Problem 2. Personal data
 
