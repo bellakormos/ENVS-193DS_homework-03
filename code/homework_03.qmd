@@ -32,7 +32,7 @@ my_data <- read_csv(here("data", "updated_personal-data.csv")) # Read in the per
 
 ## a. An appropriate test
 
-To determine the strength of the relationship between salinity and California pickleweed biomass, the two appropriate tests are the Pearson correlation and Spearman correlation tests. The pearson correlation (correlation coefficient, r) measures the strength between soil salinity and biomass, and assumes that variables are continuous, normally distributed, and have independent observations. The Spearman rank correlation is a non-parametric test that measures the stength of the monotonic relationship between ranked values of soil salinity and biomass, and it does not assume normality.
+To determine the strength of the relationship between salinity and California pickleweed biomass, the two appropriate tests are the Pearson correlation and Spearman correlation tests. The pearson correlation (correlation coefficient, r) measures the strength between soil salinity and biomass. The pearson test is a parametric test that assumes variables are continuous, normally distributed, and have independent observations. The Spearman rank correlation is a non-parametric test that measures the stength of the monotonic relationship between ranked values of soil salinity and biomass, and it does not assume normality.
 
 ## b. Create a visualization
 
@@ -54,22 +54,64 @@ ggplot(data = salinity, # using salinity data frame
   theme_light() # different from default theme
 ```
 
-## c. Check your assumptions and run your test
-
-### Assumption Checks
-
+## c. ### Assumption Checks Check and Run Test
+**Check 1: Visualization - Linearity  **
 ```{r}
-#| label: assumption checks
+#| label: visualizaiton assumption check
 #| message: false
-
-# check normality of salinity variable using Shapiro-Wilk test
-shapiro.test(salinity$salinity_mS_cm)
-
-# check normality of biomass variable using Shapiro-Wilk test
-shapiro.test(salinity$pickleweed)
+# base layer: ggplot
+ggplot(data = salinity, # using salinity data frame
+       aes(x = salinity_mS_cm, # soil salinity on x-axis (predictor)
+           y = pickleweed)) + # pickleweed biomass on y-axis (response)
+  # first layer: make scatter-plot 
+  geom_point(color = "forestgreen",
+             alpha = 0.7, # slight transparency 
+             size = 2) + # slightly larger points
+  # title plot, x-axis, y-axis
+  labs(x = "Soil Salinity (mS/cm)", 
+       y = "Pickleweed Biomass (g)",
+       title = "Relationship between Soil Salinity and Pickleweed Biomass") +
+  theme_light() # different from default theme
 ```
 
-Written response: I checked whether soil salinity and pickleweed biomass were normally distributed, since Pearson's r assumes normality. I used the Shapiro-Wilk test for both variables, and the test showed p = 0.46 for soil salinity and p = 0.11 for pickleweed biomass. Since both p-values are greater than 0.05, the data does not significantly deviate from normality, and the Pearson correlation is appropriate.
+**Check 2: QQ plot - Normal Distribution  **
+```{r}
+#| label: QQ plot for salinity
+#| message: false
+
+# base layer: ggplot using salinity data
+ggplot(data = salinity,
+       aes(sample = salinity_mS_cm)) +
+  # second layer: qq line and points
+  geom_qq_line(color = "darkgreen") +  # add theoretical normal reference line
+  geom_qq() + # add points comparing sample quantiles to theoretical normal quantiles
+  # add title, and axes labels 
+  labs(
+    title = "QQ Plot of Soil Salinity",
+    x = "Theoretical Quantiles",
+    y = "Sample Quantiles") +
+  # add new theme
+  theme_light()
+```
+
+
+```{r}
+#| label: QQ plot for biomass
+#| message: false
+
+# base layer: ggplot using salinity data
+ggplot(data = salinity,
+       aes(sample = pickleweed)) + # check normality of biomass variable
+  # second layer: qq line and points
+  geom_qq_line(color = "darkgreen") + # green reference line for easier visualization
+  geom_qq() + # plots sample quantiles against theoretical normal quantiles
+  labs(
+    title = "QQ Plot of Pickleweed Biomass", # descriptive title
+    x = "Theoretical Quantiles", # x axis label
+    y = "Sample Quantiles") + # y axis label
+  theme_light() # non-default theme
+```
+Assumption visual checks: To determine whether the Pearson correlation test was appropriate, the normality of both variables and the linearity of the relationship between them was determined. Normality was assessed visually by using the QQ plots for for both soil salinity (mS/cm) and pickleweed biomass (g). Linearity was assessed visually with a scatterplot of the two variables. Since the points on the QQ plots for both variables approximately follows the theoretical distribution reference lines with only minor deviations at the tails, both variables are approximately normally distributed. The scatterplot shows a linear pattern between soil salinity and pickleweed biomass, confirming that the linearity assumption is met and that a Pearson correlation test is appropriate.
 
 ### Running the Test
 
@@ -81,7 +123,6 @@ Written response: I checked whether soil salinity and pickleweed biomass were no
 cor.test(salinity$salinity_mS_cm, # predictor: soil salinity
          salinity$pickleweed, # response: pickleweed biomass
          method = "pearson") # parametric correlation test
-
 ```
 
 ## d. Results communication
@@ -102,10 +143,10 @@ Our analysis found a moderate positive relationship between soil salinity and pi
 cor.test(salinity$salinity_mS_cm, # predictor is salinity
          salinity$pickleweed, # response is pickleweed biomass
          method = "spearman") # non-parametric rank-based correlation
-
 ```
 
 To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman p = 59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both tests agree that the relationship is moderate and positive, so the result is robust with both correlation methods.
+
 
 # Problem 2. Personal data
 
