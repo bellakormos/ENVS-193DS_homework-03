@@ -192,10 +192,11 @@ Figure 2. The distribution of tasks completed by study location (Café vs Librar
 # Problem 3. Affective visualization
 
 ## a. Describe in words what an affective visualization could look like for your personal data (3-5 sentences).
+To represent my personal data measuring productivity in cafés vs libraries, I will draw inspiration from the Stefanie Posavec and Giorgia Lupi’s Dear Data project. My vision for this affective visualization is to combine some of my interests: houseplants, café culture, and doodling! I plan on creating a background setting of a café (relatively basic), and then add plants in the café and around it that represent data points. Each branch coming from the plant pot can represent a study session, differentiating study location with different plant species, say pileas vs jade plants. Each plant can have different doodles to show each variable I measured including: number of tasks completed, number of friends with me, busyness of location, and duration of study session. 
 
-
-## b. Create a sketch (on paper) of your idea.
-
+## b. Create a sketch of your idea.
+![Sketch of idea](sketch1.png)
+![Second Sketch of idea](sketch2.png)
 
 ## c. Make a draft of your visualization.
 
