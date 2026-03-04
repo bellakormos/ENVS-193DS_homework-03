@@ -4,8 +4,7 @@ author: "Bella Kormos"
 format: html
 ---
 
-[GitHub Repository](https://github.com/bellakormos/ENVS-193DS_homework-03) 
-# Homework Set Up
+[GitHub Repository](https://github.com/bellakormos/ENVS-193DS_homework-03) \# Homework Set Up
 
 Reading in packages:
 
@@ -32,9 +31,11 @@ my_data <- read_csv(here("data", "updated_personal-data.csv")) # Read in the per
 # Problem 1. Slough soil salinity
 
 ## a. An appropriate test
-To determine the strength of the relationship between salinity and California pickleweed biomass, the two appropriate tests are the Pearson correlation and Spearman correlation tests. The pearson correlation (correlation coefficient, r) measures the strength between soil salinity and biomass, and assumes that variables are continuous, normally distributed, and have independent observations. The Spearman rank correlation is a non-parametric test that measures the stength of the monotonic relationship between ranked values of soil salinity and biomass, and it does not assume normality. 
+
+To determine the strength of the relationship between salinity and California pickleweed biomass, the two appropriate tests are the Pearson correlation and Spearman correlation tests. The pearson correlation (correlation coefficient, r) measures the strength between soil salinity and biomass, and assumes that variables are continuous, normally distributed, and have independent observations. The Spearman rank correlation is a non-parametric test that measures the stength of the monotonic relationship between ranked values of soil salinity and biomass, and it does not assume normality.
 
 ## b. Create a visualization
+
 ```{r}
 #| label: create visualizaiton
 #| message: false
@@ -53,7 +54,6 @@ ggplot(data = salinity, # using salinity data frame
   theme_light() # different from default theme
 ```
 
-
 ## c. Check your assumptions and run your test
 
 ### Assumption Checks
@@ -68,11 +68,11 @@ shapiro.test(salinity$salinity_mS_cm)
 # check normality of biomass variable using Shapiro-Wilk test
 shapiro.test(salinity$pickleweed)
 ```
-Written response: 
-I checked whether soil salinity and pickleweed biomass were normally distributed, since Pearson's r assumes normality. I used the Shapiro-Wilk test for both variables, and the test showed p = 0.46 for soil salinity and p = 0.11 for pickleweed biomass. Since both p-values are greater than 0.05, the data does not significantly deviate from normality, and the Pearson correlation is appropriate. 
 
+Written response: I checked whether soil salinity and pickleweed biomass were normally distributed, since Pearson's r assumes normality. I used the Shapiro-Wilk test for both variables, and the test showed p = 0.46 for soil salinity and p = 0.11 for pickleweed biomass. Since both p-values are greater than 0.05, the data does not significantly deviate from normality, and the Pearson correlation is appropriate.
 
 ### Running the Test
+
 ```{r}
 #| label: pearson correlation
 #| message: false
@@ -86,14 +86,14 @@ cor.test(salinity$salinity_mS_cm, # predictor: soil salinity
 
 ## d. Results communication
 
-To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Pearson's product-moment correlation. We found a moderate positive relationship between soil salinity and pickleweed biomass (Pearson’s r = 0.53, t(21) = 2.9, p = 0.01, ⍺ = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. 
-
+To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Pearson's product-moment correlation. We found a moderate positive relationship between soil salinity and pickleweed biomass (Pearson’s r = 0.53, t(21) = 2.9, p = 0.01, ⍺ = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough.
 
 ## e. Test implications
+
 Our analysis found a moderate positive relationship between soil salinity and pickleweed biomass at this restoration site, which means that in higher salinity soils, pickleweed is growing with a greater biomass. This ultimately suggests that saltier conditions are beneficial for the growth of pickleweed, which makes sense since it is a salt-tolerate species. To ensure pickleweed planting success, planting should be prioritized in higher salinity areas of the slough.
 
-
 ## f. Double check your own work.
+
 ```{r}
 #| label: spearman tests
 #| message: false
@@ -104,13 +104,15 @@ cor.test(salinity$salinity_mS_cm, # predictor is salinity
          method = "spearman") # non-parametric rank-based correlation
 
 ```
-To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman p = 59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both tests agree that the relationship is moderate and positive, so the result is robust with both correlation methods.  
+
+To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman p = 59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both tests agree that the relationship is moderate and positive, so the result is robust with both correlation methods.
 
 # Problem 2. Personal data
 
 ## a. Updating your visualizations
 
 ### Continuous variable visualization: Time duration vs Tasks completed
+
 ```{r}
 #| label: continuous variable visualization
 #| message: false
@@ -145,7 +147,8 @@ ggplot(
   theme(panel.grid.minor = element_blank()) 
 ```
 
-### Categorical variable visualization:  vs Tasks completed
+### Categorical variable visualization: vs Tasks completed
+
 ```{r}
 #| label: categorical-variable-visualization
 #| message: false
@@ -183,43 +186,45 @@ ggplot(data = my_clean_data,
 ```
 
 ## b. Captions
-Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point reperesents a study session. 
 
-Figure 2. The distribution of tasks completed by study location (Café vs Library) across study sessions is represented by the boxplot. Each black point is a study session. The library (in blue) has higher median (around 5 tasks), while Café study sessions (gold) has a smaller IQR and median. 
+Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point reperesents a study session.
 
+Figure 2. The distribution of tasks completed by study location (Café vs Library) across study sessions is represented by the boxplot. Each black point is a study session. The library (in blue) has higher median (around 5 tasks), while Café study sessions (gold) has a smaller IQR and median.
 
 
 # Problem 3. Affective visualization
 
 ## a. Describe in words what an affective visualization could look like for your personal data (3-5 sentences).
-To represent my personal data measuring productivity in cafés vs libraries, I will draw inspiration from the Stefanie Posavec and Giorgia Lupi’s Dear Data project. My vision for this affective visualization is to combine some of my interests: houseplants, café culture, and doodling! I plan on creating a background setting of a café (relatively basic), and then add plants in the café and around it that represent data points. Each branch coming from the plant pot can represent a study session, differentiating study location with different plant species, say pileas vs jade plants. Each plant can have different doodles to show each variable I measured including: number of tasks completed, number of friends with me, busyness of location, and duration of study session. 
+
+To represent my personal data measuring productivity in cafés vs libraries, I will draw inspiration from the Stefanie Posavec and Giorgia Lupi’s Dear Data project. My vision for this affective visualization is to combine some of my interests: houseplants, café culture, and doodling! I plan on creating a background setting of a café (relatively basic), and then add plants in the café and around it that represent data points. Each branch coming from the plant pot can represent a study session, differentiating study location with different plant species, say pileas vs jade plants. Each plant can have different doodles to show each variable I measured including: number of tasks completed, number of friends with me, busyness of location, and duration of study session.
 
 ## b. Create a sketch of your idea.
-![Sketch of idea](sketch1.png)
-![Second Sketch of idea](sketch2.png)
+
+![Sketch of idea](sketch1.png) ![Second Sketch of idea](sketch2.png)
 
 ## c. Make a draft of your visualization.
 
-
 ## d. Write an artist statement.
 
+My project shows my productivity levels in terms of tasks completed during various study sessions in Libraries vs Cafés. My piece is a watercolor drawing and painting of a café with pilea and jade plants. Each branch of each plant represents a different data observation/study session, with doodles representing other variables involved. The major influences of my work include my love of watercolor, houseplants, café culture, and Giorgia Lupi’s Dear Data project. I have started sketching overall ideas of my work, then I will get watercolor paper, sketch out the final drawing with pencil, water color a base, and finally use a pen to go over all the plants and drawings in permanent black ink.
 
 ## e. Prep your materials to share in class.
+
+**In your homework submission, include a “View” link to your slides as a hyperlink.**
 
 
 # Problem 4. Statistical critique
 
 ## a. Revisit and summarize
+
 The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments lead to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.
 
-![Figure associated with statistical tests](figure.png)
-## b. Visual clarity
-The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption. 
-
+![Figure associated with statistical tests](figure.png) \## b. Visual clarity The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption.
 
 ## c. Aesthetic clarity
-The figure has a plain white background, minimal gridlines, and a simple 2-color scheme (blue for 2018 and red for 2017). These components reduce visual clutter and make the year comparison readable and clear. The plots have high data:ink ratio, however the lack of definition of the FIB types (TC, EC, ENT) is confusing. 
 
+The figure has a plain white background, minimal gridlines, and a simple 2-color scheme (blue for 2018 and red for 2017). These components reduce visual clutter and make the year comparison readable and clear. The plots have high data:ink ratio, however the lack of definition of the FIB types (TC, EC, ENT) is confusing.
 
-## d. Recommendations 
-In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from "log MPN/g dry" to "Fecal Indicator Bacteria Concentration (log MPN/g dry). In panel c, I would change the title from "log MPN/100 mL" to "Fecal Indicator Bacteria Concentration (log MPN/100 mL water). This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn't have to read the caption to understand which FIB types are being measured. 
+## d. Recommendations
+
+In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from "log MPN/g dry" to "Fecal Indicator Bacteria Concentration (log MPN/g dry). In panel c, I would change the title from "log MPN/100 mL" to "Fecal Indicator Bacteria Concentration (log MPN/100 mL water). This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn't have to read the caption to understand which FIB types are being measured.
