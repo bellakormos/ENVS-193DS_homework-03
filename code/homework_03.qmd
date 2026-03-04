@@ -209,21 +209,16 @@ Figure 2. The distribution of tasks completed by study location (Café vs Librar
 # Problem 4. Statistical critique
 
 ## a. Revisit and summarize
+The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments lead to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.
 
-
+![Figure associated with statistical tests](figure.png)
 ## b. Visual clarity
+The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption. 
 
 
 ## c. Aesthetic clarity
+The figure has a plain white background, minimal gridlines, and a simple 2-color scheme (blue for 2018 and red for 2017). These components reduce visual clutter and make the year comparison readable and clear. The plots have high data:ink ratio, however the lack of definition of the FIB types (TC, EC, ENT) is confusing. 
 
 
 ## d. Recommendations 
-
-
-
-
-
-
-
-
-
+In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from "log MPN/g dry" to "Fecal Indicator Bacteria Concentration (log MPN/g dry). In panel c, I would change the title from "log MPN/100 mL" to "Fecal Indicator Bacteria Concentration (log MPN/100 mL water). This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn't have to read the caption to understand which FIB types are being measured. 
