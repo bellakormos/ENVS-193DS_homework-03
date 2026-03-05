@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bella Kormos">
+<meta name="dcterms.date" content="2026-03-05">
 
 <title>Homework 3</title>
 <style>
@@ -96,6 +97,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 5, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -105,7 +112,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><a href="https://github.com/bellakormos/ENVS-193DS_homework-03">GitHub Repository</a> # Homework Set Up</p>
+<p>Link to my github: <a href="https://github.com/bellakormos/ENVS-193DS_homework-03">GitHub Repository</a></p>
+<section id="homework-set-up" class="level1">
+<h1>Homework Set Up</h1>
 <p>Reading in packages:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co"># load in all packages</span></span>
@@ -116,8 +125,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Reading in data:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>salinity <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"salinity-pickleweed.csv"</span>)) <span class="co"># store the data and save object as "salinity" </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"updated_personal-data.csv"</span>)) <span class="co"># Read in the personal data as an object named "my_data"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>my_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"completed-personal_data.csv"</span>)) <span class="co"># Read in the personal data as an object named "my_data"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
 <section id="problem-1.-slough-soil-salinity" class="level1">
 <h1>Problem 1. Slough soil salinity</h1>
 <section id="a.-an-appropriate-test" class="level2">
@@ -149,8 +159,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="c.-assumption-checks-check-and-run-test" class="level2">
-<h2 class="anchored" data-anchor-id="c.-assumption-checks-check-and-run-test">c.&nbsp;### Assumption Checks Check and Run Test</h2>
+<section id="c.-assumption-checks-and-test" class="level2">
+<h2 class="anchored" data-anchor-id="c.-assumption-checks-and-test">c.&nbsp;Assumption Checks and Test</h2>
 <p><strong>Check 1: Visualization - Linearity </strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base layer: ggplot</span></span>
@@ -174,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Check 2: QQ plot - Normal Distribution </strong></p>
+<p><strong>Check 2: QQ plots - Normal Distribution</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># base layer: ggplot using salinity data</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> salinity,</span>
@@ -218,8 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Assumption visual checks: To determine whether the Pearson correlation test was appropriate, the normality of both variables and the linearity of the relationship between them was determined. Normality was assessed visually by using the QQ plots for for both soil salinity (mS/cm) and pickleweed biomass (g). Linearity was assessed visually with a scatterplot of the two variables. Since the points on the QQ plots for both variables approximately follows the theoretical distribution reference lines with only minor deviations at the tails, both variables are approximately normally distributed. The scatterplot shows a linear pattern between soil salinity and pickleweed biomass, confirming that the linearity assumption is met and that a Pearson correlation test is appropriate.</p>
-<section id="running-the-test" class="level3">
-<h3 class="anchored" data-anchor-id="running-the-test">Running the Test</h3>
+<p><strong>Running the Test</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run Pearson correlation between soil salinity and pickleweed biomass</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(salinity<span class="sc">$</span>salinity_mS_cm, <span class="co"># predictor: soil salinity</span></span>
@@ -239,7 +248,6 @@ sample estimates:
 0.5344778 </code></pre>
 </div>
 </div>
-</section>
 </section>
 <section id="d.-results-communication" class="level2">
 <h2 class="anchored" data-anchor-id="d.-results-communication">d.&nbsp;Results communication</h2>
@@ -368,7 +376,7 @@ Caused by warning:
 </section>
 <section id="b.-captions" class="level2">
 <h2 class="anchored" data-anchor-id="b.-captions">b. Captions</h2>
-<p>Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point reperesents a study session.</p>
+<p>Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point represents a study session.</p>
 <p>Figure 2. The distribution of tasks completed by study location (Café vs Library) across study sessions is represented by the boxplot. Each black point is a study session. The library (in blue) has higher median (around 5 tasks), while Café study sessions (gold) has a smaller IQR and median.</p>
 </section>
 </section>
@@ -384,6 +392,7 @@ Caused by warning:
 </section>
 <section id="c.-make-a-draft-of-your-visualization." class="level2">
 <h2 class="anchored" data-anchor-id="c.-make-a-draft-of-your-visualization.">c.&nbsp;Make a draft of your visualization.</h2>
+<p>Add Draft: <img src="%5B%5Bsketch1.png%5D%5Dinsert%5D.png" class="img-fluid" alt="Draft"></p>
 </section>
 <section id="d.-write-an-artist-statement." class="level2">
 <h2 class="anchored" data-anchor-id="d.-write-an-artist-statement.">d.&nbsp;Write an artist statement.</h2>
@@ -391,7 +400,7 @@ Caused by warning:
 </section>
 <section id="e.-prep-your-materials-to-share-in-class." class="level2">
 <h2 class="anchored" data-anchor-id="e.-prep-your-materials-to-share-in-class.">e. Prep your materials to share in class.</h2>
-<p><strong>In your homework submission, include a “View” link to your slides as a hyperlink.</strong></p>
+<p><a href="https://docs.google.com/presentation/d/1SttqIWUE9gXhKkSHgmOoO1Xq_r0KEmFwASjNBVpp9Os/edit?slide=id.p#slide=id.p">View Workshop Slides</a></p>
 </section>
 </section>
 <section id="problem-4.-statistical-critique" class="level1">

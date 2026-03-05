@@ -1,10 +1,14 @@
 ---
 title: "Homework 3"
+date: "2026-03-05"
 author: "Bella Kormos"
 format: html
 ---
 
-[GitHub Repository](https://github.com/bellakormos/ENVS-193DS_homework-03) \# Homework Set Up
+Link to my github: 
+[GitHub Repository](https://github.com/bellakormos/ENVS-193DS_homework-03) 
+
+# Homework Set Up
 
 Reading in packages:
 
@@ -24,7 +28,7 @@ Reading in data:
 #| label: reading in data
 #| message: false
 salinity <- read_csv(here("data", "salinity-pickleweed.csv")) # store the data and save object as "salinity" 
-my_data <- read_csv(here("data", "updated_personal-data.csv")) # Read in the personal data as an object named "my_data"
+my_data <- read_csv(here("data", "official-personal_data.csv")) # Read in the personal data as an object named "my_data"
 
 ```
 
@@ -54,7 +58,9 @@ ggplot(data = salinity, # using salinity data frame
   theme_light() # different from default theme
 ```
 
-## c. ### Assumption Checks Check and Run Test
+
+## c. Assumption Checks and Test
+
 **Check 1: Visualization - Linearity  **
 ```{r}
 #| label: visualizaiton assumption check
@@ -74,7 +80,7 @@ ggplot(data = salinity, # using salinity data frame
   theme_light() # different from default theme
 ```
 
-**Check 2: QQ plot - Normal Distribution  **
+**Check 2: QQ plots - Normal Distribution**
 ```{r}
 #| label: QQ plot for salinity
 #| message: false
@@ -113,7 +119,7 @@ ggplot(data = salinity,
 ```
 Assumption visual checks: To determine whether the Pearson correlation test was appropriate, the normality of both variables and the linearity of the relationship between them was determined. Normality was assessed visually by using the QQ plots for for both soil salinity (mS/cm) and pickleweed biomass (g). Linearity was assessed visually with a scatterplot of the two variables. Since the points on the QQ plots for both variables approximately follows the theoretical distribution reference lines with only minor deviations at the tails, both variables are approximately normally distributed. The scatterplot shows a linear pattern between soil salinity and pickleweed biomass, confirming that the linearity assumption is met and that a Pearson correlation test is appropriate.
 
-### Running the Test
+**Running the Test**
 
 ```{r}
 #| label: pearson correlation
@@ -157,15 +163,12 @@ To evaluate the strength of the relationship between pickleweed biomass and soil
 ```{r}
 #| label: continuous variable visualization
 #| message: false
+#| warning: true
 my_clean_data <- my_data |> # use cleaned data-set
   clean_names() |> # clean column names
   rename(duration = duration_hr_mm) |> # rename for easier use
-  filter(duration != "48:00:00") |> # remove the typo entry
    # convert all durations to decimal point instead of ":"
-   mutate(duration_decimal = case_when(
-    str_detect(duration, "\\.") ~ as.numeric(duration), # if format is 4.18, keep as numeric
-    str_detect(duration, ":") ~ period_to_seconds(hm(duration)) / 3600 # if format is 1:43, convert to decimal
-  )) 
+  mutate(duration_decimal = as.numeric(duration)) # convert decimal duration to numeric
 # base layer: ggplot
 ggplot(
   data = my_clean_data,
@@ -193,6 +196,7 @@ ggplot(
 ```{r}
 #| label: categorical-variable-visualization
 #| message: false
+#| warning: false
 my_clean_data <- my_data |> 
   clean_names() # columns names lower case with underscores
 # base layer: ggplot using cleaned data-set
@@ -228,7 +232,7 @@ ggplot(data = my_clean_data,
 
 ## b. Captions
 
-Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point reperesents a study session.
+Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point represents a study session.
 
 Figure 2. The distribution of tasks completed by study location (Café vs Library) across study sessions is represented by the boxplot. Each black point is a study session. The library (in blue) has higher median (around 5 tasks), while Café study sessions (gold) has a smaller IQR and median.
 
@@ -245,13 +249,17 @@ To represent my personal data measuring productivity in cafés vs libraries, I w
 
 ## c. Make a draft of your visualization.
 
+Add Draft: 
+![Draft]([[sketch1.png]]insert].png) 
+
+
 ## d. Write an artist statement.
 
 My project shows my productivity levels in terms of tasks completed during various study sessions in Libraries vs Cafés. My piece is a watercolor drawing and painting of a café with pilea and jade plants. Each branch of each plant represents a different data observation/study session, with doodles representing other variables involved. The major influences of my work include my love of watercolor, houseplants, café culture, and Giorgia Lupi’s Dear Data project. I have started sketching overall ideas of my work, then I will get watercolor paper, sketch out the final drawing with pencil, water color a base, and finally use a pen to go over all the plants and drawings in permanent black ink.
 
 ## e. Prep your materials to share in class.
 
-**In your homework submission, include a “View” link to your slides as a hyperlink.**
+[View Workshop Slides](https://docs.google.com/presentation/d/1SttqIWUE9gXhKkSHgmOoO1Xq_r0KEmFwASjNBVpp9Os/edit?slide=id.p#slide=id.p)
 
 
 # Problem 4. Statistical critique
