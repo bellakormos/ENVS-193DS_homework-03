@@ -28,7 +28,7 @@ Reading in data:
 #| label: reading in data
 #| message: false
 salinity <- read_csv(here("data", "salinity-pickleweed.csv")) # store the data and save object as "salinity" 
-my_data <- read_csv(here("data", "official-personal_data.csv")) # Read in the personal data as an object named "my_data"
+my_data <- read_csv(here("data", "official_personal_data.csv")) # Read in the personal data as an object named "my_data"
 
 ```
 
@@ -250,7 +250,7 @@ To represent my personal data measuring productivity in cafés vs libraries, I w
 ## c. Make a draft of your visualization.
 
 Add Draft: 
-![Draft]([[sketch1.png]]insert].png) 
+![Draft](insert.png) 
 
 
 ## d. Write an artist statement.
