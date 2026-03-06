@@ -185,7 +185,7 @@ ggplot(
   labs(title = "Analyzing productivity:\nTasks Completed vs. Study Duration",
        x = "Study Duration (hours)",
        y = "Tasks Completed",
-    subtitle = "Most recent observation: March 1, 2026") + # most recent date
+    subtitle = "Most recent observation: March 4, 2026") + # most recent date
   # add clean themes and remove minor grid lines
   theme_minimal() + 
   theme(panel.grid.minor = element_blank()) 
@@ -204,10 +204,6 @@ ggplot(data = my_clean_data,
       aes(x = study_location, # categorical predictor on x-axis
           y = tasks_completed, # response variable on y-axis
           fill = study_location)) + 
-  # add a cap at whisker end for visual appeal
-  stat_boxplot(
-    geom = "errorbar", # adds horizontal caps at whisker ends
-    width = 0.02) + # width os the caps
   # first layer: boxplot 
   geom_boxplot(alpha = 0.6, # make boxplot transparent 
                width = 0.4) + 
@@ -222,7 +218,7 @@ ggplot(data = my_clean_data,
     labs(title = "Analyzing productivity:\nTasks Completed vs. Study Location",
            x = "Study Location",
            y = "Tasks Completed",
-  subtitle = "Most recent observation: March 1, 2026") + # add subtitle with date
+  subtitle = "Most recent observation: March 4, 2026") + # add subtitle with date
   # set theme, remove legend, remove minor grid lines
   theme_minimal() + 
   theme(legend.position = "none") + 
@@ -232,9 +228,9 @@ ggplot(data = my_clean_data,
 
 ## b. Captions
 
-Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point represents a study session.
+**Figure 1.** The positive relationship between study duration (hours) and tasks completed from all study sessions is represented in a scatter-plot (most recent observation: March 4, 2026). Each green point represents a study session. There is a general tendency for more tasks to be completed during longer sessions, however, there is considerable spread in the data, particularly at shorter duration.
 
-Figure 2. The distribution of tasks completed by study location (Café vs Library) across study sessions is represented by the boxplot. Each black point is a study session. The library (in blue) has higher median (around 5 tasks), while Café study sessions (gold) has a smaller IQR and median.
+**Figure 2.** Distribution of tasks completed by study location (Café vs. Library) across all study sessions (most recent observation: March 4, 2026). Each black point is a study session. The library (in blue) has higher median (around 5 tasks) and more high-task outliers. Café study sessions (in gold) shows a tighter interquartile range and smaller median (around 3). 
 
 
 # Problem 3. Affective visualization
@@ -266,9 +262,13 @@ My project shows my productivity levels in terms of tasks completed during vario
 
 ## a. Revisit and summarize
 
-The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments lead to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.
+The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments led to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.
 
-![Figure associated with statistical tests](figure.png) \## b. Visual clarity The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption.
+![Figure associated with statistical tests](figure.png) \
+
+## b. Visual clarity
+
+The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption.
 
 ## c. Aesthetic clarity
 
@@ -276,4 +276,4 @@ The figure has a plain white background, minimal gridlines, and a simple 2-color
 
 ## d. Recommendations
 
-In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from "log MPN/g dry" to "Fecal Indicator Bacteria Concentration (log MPN/g dry). In panel c, I would change the title from "log MPN/100 mL" to "Fecal Indicator Bacteria Concentration (log MPN/100 mL water). This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn't have to read the caption to understand which FIB types are being measured.
+In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from "log MPN/g dry" to "Fecal Indicator Bacteria Concentration (log MPN/g dry)". In panel c, I would change the title from "log MPN/100 mL" to "Fecal Indicator Bacteria Concentration (log MPN/100 mL water)". This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn't have to read the caption to understand which FIB types are being measured.
