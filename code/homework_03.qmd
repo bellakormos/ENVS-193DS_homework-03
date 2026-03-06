@@ -2,7 +2,12 @@
 title: "Homework 3"
 date: "2026-03-05"
 author: "Bella Kormos"
-format: html
+format:
+  html:
+    toc: true # use this to display a table of contents
+execute:
+  message: false # use this to make sure messages don't show up
+  warning: false # use this to make sure warnings don't show upl
 ---
 
 Link to my github: 
@@ -16,9 +21,9 @@ Reading in packages:
 #| label: packages
 #| message: false
 library(tidyverse) # load in all packages
-library(janitor)
+library(janitor) # clean column names
 library(here) # identifies computer's root folder
-library(lubridate)
+library(lubridate) # work with date/time data
 
 ```
 
@@ -151,7 +156,7 @@ cor.test(salinity$salinity_mS_cm, # predictor is salinity
          method = "spearman") # non-parametric rank-based correlation
 ```
 
-To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman ρ = 59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both tests agree that the relationship is moderate and positive, so the result is robust with both correlation methods.
+To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman ρ = 0.59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both tests agree that the relationship is moderate and positive, so the result is robust with both correlation methods.
 
 
 # Problem 2. Personal data
@@ -163,7 +168,7 @@ To evaluate the strength of the relationship between pickleweed biomass and soil
 ```{r}
 #| label: continuous variable visualization
 #| message: false
-#| warning: true
+#| warning: false
 my_clean_data <- my_data |> # use cleaned data-set
   clean_names() |> # clean column names
   rename(duration = duration_hr_mm) |> # rename for easier use
@@ -191,7 +196,7 @@ ggplot(
   theme(panel.grid.minor = element_blank()) 
 ```
 
-### Categorical variable visualization: vs Tasks completed
+### Categorical variable visualization: Study Location vs Tasks completed
 
 ```{r}
 #| label: categorical-variable-visualization
@@ -241,12 +246,11 @@ To represent my personal data measuring productivity in cafés vs libraries, I w
 
 ## b. Create a sketch of your idea.
 
-![Sketch of idea](sketch1.png) 
+![](sketch1.png) 
 
 ## c. Make a draft of your visualization.
 
-Add Draft: 
-![Second Sketch of idea](sketch2.png)
+![](sketch2.png)
 
 ## d. Write an artist statement.
 
@@ -263,7 +267,7 @@ My project shows my productivity levels in terms of tasks completed during vario
 
 The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments led to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.
 
-![Figure associated with statistical tests](figure.png) \
+![Figure associated with statistical tests](figure.png) 
 
 ## b. Visual clarity
 
