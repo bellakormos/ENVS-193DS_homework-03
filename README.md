@@ -13,4 +13,4 @@ There is code files with my qmd document and html document, and a data file with
 
 ## Rendered output
 
-**[working url](https://bellakormos.github.io/ENVS-193DS_homework-03/code/homework_03.html)**
+**[Homework 3 html link](https://bellakormos.github.io/ENVS-193DS_homework-03/code/homework_03.html)**
