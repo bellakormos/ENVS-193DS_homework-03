@@ -241,12 +241,12 @@ To represent my personal data measuring productivity in cafés vs libraries, I w
 
 ## b. Create a sketch of your idea.
 
-![Sketch of idea](sketch1.png) ![Second Sketch of idea](sketch2.png)
+![Sketch of idea](sketch1.png) 
 
 ## c. Make a draft of your visualization.
 
 Add Draft: 
-![Draft](insert.png) 
+![Second Sketch of idea](sketch2.png)
 
 
 ## d. Write an artist statement.
