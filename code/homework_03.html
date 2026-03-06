@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="homework_03_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="homework_03_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="homework_03_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="homework_03_files/libs/bootstrap/bootstrap-8a194af6e320b7e92a73b9d91467a5ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="homework_03_files/libs/bootstrap/bootstrap-f587f7f4293d47f68ac89e56eb41b7e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -307,7 +307,7 @@ sample estimates:
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Analyzing productivity:</span><span class="sc">\n</span><span class="st">Tasks Completed vs. Study Duration"</span>,</span>
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Study Duration (hours)"</span>,</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Tasks Completed"</span>,</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Most recent observation: March 1, 2026"</span>) <span class="sc">+</span> <span class="co"># most recent date</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Most recent observation: March 4, 2026"</span>) <span class="sc">+</span> <span class="co"># most recent date</span></span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add clean themes and remove minor grid lines</span></span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -330,30 +330,26 @@ sample estimates:
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">aes</span>(<span class="at">x =</span> study_location, <span class="co"># categorical predictor on x-axis</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">y =</span> tasks_completed, <span class="co"># response variable on y-axis</span></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">fill =</span> study_location)) <span class="sc">+</span> </span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add a cap at whisker end for visual appeal</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_boxplot</span>(</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"errorbar"</span>, <span class="co"># adds horizontal caps at whisker ends</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.02</span>) <span class="sc">+</span> <span class="co"># width os the caps</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># first layer: boxplot </span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="co"># make boxplot transparent </span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> </span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># second layer: add jittered points </span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="co"># horizontal spread to avoid overlap</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="co"># semi-transparent points</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>              <span class="at">size  =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># point size</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Café"</span> <span class="ot">=</span> <span class="st">"#FEBC11"</span>, <span class="co"># warm gold for café</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Library"</span> <span class="ot">=</span> <span class="st">"#4169E1"</span>)) <span class="sc">+</span> <span class="co"># muted blue-green for library</span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">2</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">13</span>)) <span class="sc">+</span> <span class="co"># set  y-axis tick marks every 2 tasks for clarity</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add title and axis labels    </span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Analyzing productivity:</span><span class="sc">\n</span><span class="st">Tasks Completed vs. Study Location"</span>,</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">"Study Location"</span>,</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">"Tasks Completed"</span>,</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Most recent observation: March 1, 2026"</span>) <span class="sc">+</span> <span class="co"># add subtitle with date</span></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set theme, remove legend, remove minor grid lines</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># first layer: boxplot </span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="co"># make boxplot transparent </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> <span class="fl">0.4</span>) <span class="sc">+</span> </span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># second layer: add jittered points </span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="co"># horizontal spread to avoid overlap</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha =</span> <span class="fl">0.7</span>, <span class="co"># semi-transparent points</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>              <span class="at">size  =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="co"># point size</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Café"</span> <span class="ot">=</span> <span class="st">"#FEBC11"</span>, <span class="co"># warm gold for café</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">"Library"</span> <span class="ot">=</span> <span class="st">"#4169E1"</span>)) <span class="sc">+</span> <span class="co"># muted blue-green for library</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">2</span>), <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">13</span>)) <span class="sc">+</span> <span class="co"># set  y-axis tick marks every 2 tasks for clarity</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add title and axis labels    </span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Analyzing productivity:</span><span class="sc">\n</span><span class="st">Tasks Completed vs. Study Location"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">x =</span> <span class="st">"Study Location"</span>,</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> <span class="st">"Tasks Completed"</span>,</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">subtitle =</span> <span class="st">"Most recent observation: March 4, 2026"</span>) <span class="sc">+</span> <span class="co"># add subtitle with date</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># set theme, remove legend, remove minor grid lines</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span> </span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -366,8 +362,8 @@ sample estimates:
 </section>
 <section id="b.-captions" class="level2">
 <h2 class="anchored" data-anchor-id="b.-captions">b. Captions</h2>
-<p>Figure 1. The relationship between study duration (hours) and tasks completed across all study sessions is represented in a scatter-plot. The most recent observation was March 1, 2026, and each green point represents a study session.</p>
-<p>Figure 2. The distribution of tasks completed by study location (Café vs Library) across study sessions is represented by the boxplot. Each black point is a study session. The library (in blue) has higher median (around 5 tasks), while Café study sessions (gold) has a smaller IQR and median.</p>
+<p><strong>Figure 1.</strong> The positive relationship between study duration (hours) and tasks completed from all study sessions is represented in a scatter-plot (most recent observation: March 4, 2026). Each green point represents a study session. There is a general tendency for more tasks to be completed during longer sessions, however, there is considerable spread in the data, particularly at shorter duration.</p>
+<p><strong>Figure 2.</strong> Distribution of tasks completed by study location (Café vs.&nbsp;Library) across all study sessions (most recent observation: March 4, 2026). Each black point is a study session. The library (in blue) has higher median (around 5 tasks) and more high-task outliers. Café study sessions (in gold) shows a tighter interquartile range and smaller median (around 3).</p>
 </section>
 </section>
 <section id="problem-3.-affective-visualization" class="level1">
@@ -397,8 +393,13 @@ sample estimates:
 <h1>Problem 4. Statistical critique</h1>
 <section id="a.-revisit-and-summarize" class="level2">
 <h2 class="anchored" data-anchor-id="a.-revisit-and-summarize">a. Revisit and summarize</h2>
-<p>The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments lead to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.</p>
-<p><img src="figure.png" class="img-fluid" alt="Figure associated with statistical tests"> ## b. Visual clarity The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption.</p>
+<p>The authors investigate whether emergency beach nourishment using contaminated urban debris-flow sediments led to elevated fecal indicator bacteria (FIB) in the surf zone at Goleta Beach. The authors hypothesized that these disposed sediments contaminated with human fecal material changed Goleta Beach’s surf microbiology and can inform future public health protection.</p>
+<p><img src="figure.png" class="img-fluid" alt="Figure associated with statistical tests"><br>
+</p>
+</section>
+<section id="b.-visual-clarity" class="level2">
+<h2 class="anchored" data-anchor-id="b.-visual-clarity">b. Visual clarity</h2>
+<p>The authors represent their statistics through side-by-side box-plots comparing three different types of fecal indicator bacteria(TC, EC, ENT) in 2017 and 2018. Panel a represents the log- transformed concentration of FIB in log MPN/g in dry sediment, while panel c represents the concentration of FIB in log MPN/100 mL in water, which ultimately shows how FIB concentrations increased during the 2018 sediment disposal event relative to the 2017 reference conditions. The x and y-axes are logically positioned with the bacteria type on x-axis, and log-transformed concentration on the y-axis, the medians and IQR are well represented. However, the y-axis title is quite confusing, and the FIB types are unknown without reading the figure caption.</p>
 </section>
 <section id="c.-aesthetic-clarity" class="level2">
 <h2 class="anchored" data-anchor-id="c.-aesthetic-clarity">c.&nbsp;Aesthetic clarity</h2>
@@ -406,7 +407,7 @@ sample estimates:
 </section>
 <section id="d.-recommendations" class="level2">
 <h2 class="anchored" data-anchor-id="d.-recommendations">d.&nbsp;Recommendations</h2>
-<p>In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from “log MPN/g dry” to “Fecal Indicator Bacteria Concentration (log MPN/g dry). In panel c, I would change the title from”log MPN/100 mL” to “Fecal Indicator Bacteria Concentration (log MPN/100 mL water). This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn’t have to read the caption to understand which FIB types are being measured.</p>
+<p>In panel a, to improve the clarity of the y-axis lable, I would change the figure caption from “log MPN/g dry” to “Fecal Indicator Bacteria Concentration (log MPN/g dry)”. In panel c, I would change the title from “log MPN/100 mL” to “Fecal Indicator Bacteria Concentration (log MPN/100 mL water)”. This clarifies the sample type and adds context to the units. I would also add a figure legend below or next to the year legend writing out the full names of the FIB types (Total Coliform, E. coli, Enterococci). This makes it easier to understand the abbreviations so the reader doesn’t have to read the caption to understand which FIB types are being measured.</p>
 </section>
 </section>
 
