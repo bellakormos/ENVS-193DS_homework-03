@@ -233,7 +233,7 @@ ggplot(data = my_clean_data,
 
 ## b. Captions
 
-**Figure 1.** The positive relationship between study duration (hours) and tasks completed from all study sessions is represented in a scatter-plot (most recent observation: March 4, 2026). Each green point represents a study session. There is a general tendency for more tasks to be completed during longer sessions, however, there is considerable spread in the data, particularly at shorter duration.
+**Figure 1.** The positive relationship between study duration (hours) and tasks completed from all study sessions (most recent observation: March 4, 2026). These points are represented in a scatter-plot, and each green point represents a study session. There is a general tendency for more tasks to be completed during longer sessions, however, there is considerable spread in the data, particularly at shorter duration.
 
 **Figure 2.** Distribution of tasks completed by study location (Café vs. Library) across all study sessions (most recent observation: March 4, 2026). Each black point is a study session. The library (in blue) has higher median (around 5 tasks) and more high-task outliers. Café study sessions (in gold) shows a tighter interquartile range and smaller median (around 3). 
 
