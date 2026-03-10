@@ -156,7 +156,7 @@ cor.test(salinity$salinity_mS_cm, # predictor is salinity
          method = "spearman") # non-parametric rank-based correlation
 ```
 
-To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman ρ = 0.59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both the Pearson's product-moment correlation (r = 0.53) and Spearman's rank correlation rho(ρ = 0.59) found a moderate positive relationship between soil salinity and pickleweed biomass, which confirms that the result is robust and uniform with both correlation methods.
+To evaluate the strength of the relationship between pickleweed biomass and soil salinity, I used a Spearman's rank correlation rho. We found a moderate relationship between soil salinity and pickleweed biomass (Spearman ρ = 0.59, S = 824, p = 0.003, α = 0.05), which suggests that pickleweed biomass tends to increase as soil salinity increases along the slough. Both the Pearson's product-moment correlation (r = 0.53) and Spearman's rank correlation rho(ρ = 0.59) found a moderate positive relationship between soil salinity and pickleweed biomass, which confirms that the result is robust and consistent with both correlation methods.
 
 
 # Problem 2. Personal data
